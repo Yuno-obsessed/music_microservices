@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:latest
+  auth-service:
+    container_name: auth-service
+    build:
+      dockerfile:
+        AuthService/Dockerfile
+    image: auth-service:latest
+    env_file:
+      - AuthService/.env
+  cloud-service:
+    build:
+      dockerfile:
+        CloudService/Dockerfile
+  database-service:
+    build:
+      dockerfile:
+        DatabaseService/Dockerfile
+  mail-service:
+    build:
+      dockerfile:
+        MailService/Dockerfile
+  order-service:
+    build:
+      dockerfile:
+        OrderService/Dockerfile
+volumes:
+  postgres:
