@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS login;
+DROP TABLE IF EXISTS register;

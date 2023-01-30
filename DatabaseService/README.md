@@ -2,7 +2,7 @@
 
 ---
 
-> Database-Service is occupied in taking data from Auth-Service,
-> storing it and letting other services access it if needed.
+> Database-Service is occupied in migrating database tables,
+> inititalizing them and providing logs with heartbeat
 
 ---

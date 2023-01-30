@@ -1,7 +1,11 @@
 package server
 
 import (
+	"auth-service/server/handlers/auth"
+	"auth-service/server/handlers/facebook"
+	"auth-service/server/handlers/google"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 )
@@ -15,12 +19,26 @@ func NewRouter() Router {
 }
 
 func (r Router) AuthGroup() {
-	auth := r.Group("/api/v1")
-	auth.POST("/login", auth.LoginHandler)
+	authGroup := r.Group("/api/v1")
+	authGroup.GET("/healthcheck", func(c *gin.Context) {
+		c.JSON(200, "healthy")
+	})
+	authGroup.POST("/login", auth.LoginHandler)
+	authGroup.GET("/login/auth/facebook", facebook.FacebookLoginHandler)
+	authGroup.GET("/login/auth/facebook/callback", facebook.FacebookLoginCallback)
+	authGroup.GET("/login/auth/google", google.GoogleLoginHandler)
+	authGroup.GET("/login/auth/google/callback", google.GoogleLoginCallback)
 }
 
-func (r Router) RoutesInit() {
+// Function for testing
+func (r Router) InitRoutes() {
+	godotenv.Load("../.env")
+	r.AuthGroup()
+	log.Fatal(r.Run(":" + os.Getenv("PORT")))
+}
+
+func Init() {
 	router := NewRouter()
 	router.AuthGroup()
-	log.Fatal(router.Run(os.Getenv("PORT")))
+	log.Fatal(router.Run(":" + os.Getenv("PORT")))
 }

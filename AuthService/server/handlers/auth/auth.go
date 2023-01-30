@@ -1,13 +1,22 @@
 package auth
 
 import (
-	"auth-service/entity"
+	"auth-service/domain/entity"
+	"auth-service/infra/auth"
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"time"
 )
 
 func LoginHandler(c *gin.Context) {
 	var login entity.Login
 	json.NewDecoder(c.Request.Body).Decode(&login)
-	c.SetCookie("")
+	jwt, err := auth.NewJWT().GenerateToken(login.Email)
+	if err != nil {
+		c.AbortWithStatusJSON(500, fmt.Sprintf("error "))
+	}
+	c.SetCookie("Authorization", jwt,
+		int(time.Now().Add(72*time.Hour).Unix()),
+		"", "", false, true)
 }

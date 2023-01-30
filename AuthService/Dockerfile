@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine as modules
+FROM golang:1.19 as modules
 
 ADD ./go.mod ./go.sum /cmd/
 RUN cd /cmd && go mod download
