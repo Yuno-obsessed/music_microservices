@@ -22,3 +22,5 @@
 #go.work
 .idea
 .env
+DatabaseService/.env
+AuthService/.env
