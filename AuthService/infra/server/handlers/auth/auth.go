@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// LoginHandler is get request with payload of json{"email", "password"}
 func LoginHandler(c *gin.Context) {
 	var login entity.Login
 	json.NewDecoder(c.Request.Body).Decode(&login)
