@@ -3,7 +3,7 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"mail-service/server/handlers/mail"
+	"mail-service/infra/server/handlers/mail"
 	"os"
 )
 

@@ -1,7 +1,7 @@
 package server_test
 
 import (
-	"auth-service/server"
+	"auth-service/infra/server"
 	"net/http"
 	"net/http/httptest"
 	"testing"

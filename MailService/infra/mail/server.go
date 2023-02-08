@@ -6,11 +6,11 @@ import (
 	"mail-service/infra/config"
 )
 
-func NewSmtpServer(conf config.Config) (Mail, error) {
+func NewSmtpServer() (Mail, error) {
+	conf := config.NewConfig()
 	mail := Mail{
 		Dialer: gomail.NewDialer(conf.Smtp.Host,
 			conf.Smtp.Port, conf.Smtp.Username, conf.Smtp.Password),
-		From: conf.Smtp.Username,
 	}
 	conn, err := mail.Dialer.Dial()
 	if err != nil {

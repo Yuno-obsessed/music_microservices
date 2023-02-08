@@ -1,7 +1,7 @@
 package main
 
 import (
-	"auth-service/server"
+	"auth-service/infra/server"
 	"github.com/joho/godotenv"
 )
 

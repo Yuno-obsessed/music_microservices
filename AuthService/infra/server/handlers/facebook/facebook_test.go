@@ -1,7 +1,7 @@
 package facebook_test
 
 import (
-	"auth-service/server"
+	"auth-service/infra/server"
 	"encoding/json"
 	"github.com/joho/godotenv"
 	"github.com/markbates/goth"

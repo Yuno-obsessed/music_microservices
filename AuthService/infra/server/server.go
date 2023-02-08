@@ -1,9 +1,9 @@
 package server
 
 import (
-	"auth-service/server/handlers/auth"
-	"auth-service/server/handlers/facebook"
-	"auth-service/server/handlers/google"
+	"auth-service/infra/server/handlers/auth"
+	"auth-service/infra/server/handlers/facebook"
+	"auth-service/infra/server/handlers/google"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"log"

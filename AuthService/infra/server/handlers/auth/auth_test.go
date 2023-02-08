@@ -3,7 +3,7 @@ package auth_test
 import (
 	"auth-service/domain/entity"
 	jwt "auth-service/infra/auth"
-	"auth-service/server/handlers/auth"
+	"auth-service/infra/server/handlers/auth"
 	"bytes"
 	"encoding/json"
 	"github.com/gin-gonic/gin"

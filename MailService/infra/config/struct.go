@@ -1,5 +1,7 @@
 package config
 
+import "go.uber.org/zap"
+
 type Smtp struct {
 	Host     string
 	Port     int
@@ -7,6 +9,11 @@ type Smtp struct {
 	Password string
 }
 
+type LoggerConfig struct {
+	Config zap.Config
+}
+
 type Config struct {
-	Smtp Smtp
+	Smtp   Smtp
+	Logger LoggerConfig
 }

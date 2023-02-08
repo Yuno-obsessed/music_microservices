@@ -18,6 +18,6 @@ RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
 FROM alpine:latest as image
 
 COPY --from=builder /bin/cmd .
-EXPOSE 8081
+EXPOSE 8083
 
 ENTRYPOINT [ "./cmd" ]
