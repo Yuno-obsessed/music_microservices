@@ -1,4 +1,4 @@
-module auth-service
+module github.com/Yuno-obsessed/music_microservices/AuthService
 
 go 1.19
 

@@ -1,6 +1,6 @@
 package repository
 
-import "event-service/domain/entity"
+import "github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 
 type EventRepository interface {
 	GetOne(id string) (entity.Event, error)

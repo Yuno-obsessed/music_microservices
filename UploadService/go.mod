@@ -1,4 +1,4 @@
-module github.com/Yuno-obsessed/tdd_microservices/tree/main/UploadService
+module github.com/Yuno-obsessed/music_microservices/UploadService
 
 go 1.20
 

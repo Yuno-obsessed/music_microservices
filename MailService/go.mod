@@ -1,4 +1,4 @@
-module mail-service
+module github.com/Yuno-obsessed/music_microservices/MailService
 
 go 1.19
 

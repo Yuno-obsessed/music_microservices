@@ -1,4 +1,4 @@
-module event-service
+module github.com/Yuno-obsessed/music_microservices/EventService
 
 go 1.20
 

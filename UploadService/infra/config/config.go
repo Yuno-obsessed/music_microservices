@@ -1,8 +1,8 @@
 package config
 
 import (
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"go.uber.org/zap"
-	"project_library/logger"
 )
 
 type Logger *zap.Logger

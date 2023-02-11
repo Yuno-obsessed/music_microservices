@@ -1,4 +1,4 @@
-module customer-service
+module github.com/Yuno-obsessed/music_microservices/CustomerService
 
 go 1.20
 

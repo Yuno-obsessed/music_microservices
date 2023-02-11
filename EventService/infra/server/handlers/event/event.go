@@ -2,7 +2,7 @@ package event
 
 import (
 	"encoding/json"
-	"event-service/service/event"
+	"github.com/Yuno-obsessed/music_microservices/EventService/service/event"
 	"github.com/gin-gonic/gin"
 )
 

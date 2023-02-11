@@ -1,8 +1,8 @@
 package event
 
 import (
-	"event-service/domain/entity"
 	"fmt"
+	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 	"github.com/jinzhu/gorm"
 )
 
