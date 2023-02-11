@@ -7,6 +7,7 @@ import (
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"log"
 )
 
 type Repositories struct {
@@ -16,6 +17,7 @@ type Repositories struct {
 
 func NewRepositories() *Repositories {
 	db, _ := gorm.Open("postgres", database.DbDns())
+	log.Printf("NewRepositories, %v\n", database.DbDns())
 	return &Repositories{
 		Db:    db,
 		Event: event.NewEventService(db),

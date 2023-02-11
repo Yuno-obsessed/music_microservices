@@ -3,21 +3,27 @@ package event
 import (
 	"encoding/json"
 	"github.com/Yuno-obsessed/music_microservices/EventService/service/event"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/gin-gonic/gin"
 )
 
 type Event struct {
 	event event.EventService
+	logger logger.Logger
 }
 
-func NewEvent(service event.EventService) *Event {
-	return &Event{event: service}
+func NewEvent(service event.EventService) Event {
+	return Event{
+		event: service,
+		logger: logger.NewLogger(),
+	}
 }
 
 func (e *Event) EventInfo(c *gin.Context) {
 	path := c.Param(":id")
 	newEvent, err := e.event.GetOne(path)
 	if err != nil {
+		e.logger
 		c.AbortWithStatusJSON(400, err.Error())
 	}
 	err = json.NewEncoder(c.Writer).Encode(&newEvent)

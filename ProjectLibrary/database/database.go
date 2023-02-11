@@ -11,7 +11,7 @@ import (
 
 type Database struct {
 	Pool   *pgxpool.Pool
-	Logger logger.Logger
+	Logger logger.CustomLogger
 	Dns    string
 }
 

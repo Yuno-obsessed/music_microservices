@@ -6,11 +6,11 @@ import (
 	"log"
 )
 
-type Logger *zap.Logger
+type CustomLogger *zap.Logger
 
-func NewLogger() Logger {
-	conf := config.NewConfig()
-	logger, err := conf.Logger.Config.Build()
+func NewLogger() CustomLogger {
+	conf := config.LoggerConfigInit()
+	logger, err := conf.Config.Build()
 	if err != nil {
 		log.Fatalf("error setting up logger, %v", err)
 	}

@@ -1,4 +1,4 @@
-module database-service
+module github.com/Yuno-obsessed/music_microservices/DatabaseService
 
 go 1.19
 
