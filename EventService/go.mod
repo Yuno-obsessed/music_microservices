@@ -3,7 +3,7 @@ module github.com/Yuno-obsessed/music_microservices/EventService
 go 1.20
 
 require (
-	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211145016-b902c2da8e28
+	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211161642-c07f409e96e6
 	github.com/gin-gonic/gin v1.8.2
 	github.com/google/uuid v1.3.0
 	github.com/jinzhu/gorm v1.9.16
@@ -30,7 +30,7 @@ require (
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	go.uber.org/atomic v1.10.0 // indirect
-	go.uber.org/multierr v1.6.0 // indirect
+	go.uber.org/multierr v1.9.0 // indirect
 	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/crypto v0.0.0-20220829220503-c86fa9a7ed90 // indirect
 	golang.org/x/net v0.4.0 // indirect

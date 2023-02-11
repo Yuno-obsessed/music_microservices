@@ -6,7 +6,9 @@ import (
 	"log"
 )
 
-type CustomLogger *zap.Logger
+type CustomLogger struct {
+	*zap.Logger
+}
 
 func NewLogger() CustomLogger {
 	conf := config.LoggerConfigInit()
@@ -14,5 +16,5 @@ func NewLogger() CustomLogger {
 	if err != nil {
 		log.Fatalf("error setting up logger, %v", err)
 	}
-	return logger
+	return CustomLogger{logger}
 }

@@ -9,7 +9,7 @@ import (
 
 type Event struct {
 	event event.EventService
-	logger logger.Logger
+	logger logger.CustomLogger
 }
 
 func NewEvent(service event.EventService) Event {
