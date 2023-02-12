@@ -5,6 +5,7 @@ import "github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 type EventRepository interface {
 	GetOne(id string) (entity.Event, error)
 	GetAllOfBand(band string) ([]entity.Event, error)
+	GetAllOfCity(city string) ([]entity.Event, error)
 	// add limit and offset
 	GetAll() ([]entity.Event, error)
 	Create(event entity.Event) error

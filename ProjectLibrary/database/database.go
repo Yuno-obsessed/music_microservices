@@ -25,7 +25,7 @@ func NewDatabase() Database {
 
 func DbDns() string {
 	conf := config.DatabaseConfigInit()
-	return fmt.Sprintf("%s://%s:%s@localhost:%s/%s",
+	return fmt.Sprintf("%s://%s:%s@localhost:%s/%s&parseTime=True",
 		conf.Driver, conf.User,
 		conf.Password, conf.Port, conf.Database)
 }

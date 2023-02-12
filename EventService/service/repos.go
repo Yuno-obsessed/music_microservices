@@ -2,7 +2,6 @@ package service
 
 import (
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
-	"github.com/Yuno-obsessed/music_microservices/EventService/domain/repository"
 	"github.com/Yuno-obsessed/music_microservices/EventService/service/event"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 	"github.com/jinzhu/gorm"
@@ -11,7 +10,7 @@ import (
 )
 
 type Repositories struct {
-	Event repository.EventRepository
+	Event event.EventService
 	Db    *gorm.DB
 }
 

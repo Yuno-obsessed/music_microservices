@@ -3,6 +3,8 @@ github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-2023021114501
 github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211145016-b902c2da8e28/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
 github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211161642-c07f409e96e6 h1:Ww2ecFA8P9acBVsHgeWm/va1+UgrJsOtangd6wli+Ws=
 github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211161642-c07f409e96e6/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d h1:WM5v9tlbTfqrkdPeypOOMSQ53r5Pe5jUcuuXYCWFP3M=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
 github.com/andybalholm/cascadia v1.1.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=

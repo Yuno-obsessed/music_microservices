@@ -3,8 +3,8 @@ package event_test
 import (
 	"bytes"
 	"encoding/json"
-	"event-service/domain/entity"
-	"event-service/infra/server/handlers/event"
+	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/EventService/infra/server/handlers/event"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"net/http"
@@ -16,17 +16,10 @@ import (
 func TestWatchEvent(t *testing.T) {
 	router := gin.Default()
 	eventInfo := entity.Event{
-		EventId:  uuid.New().String(),
-		BandName: "Eluveitie",
-		EventCity: entity.City{
-			Id: uuid.New().String(),
-			CountryId: entity.Country{
-				Id:          uuid.New().String(),
-				CountryName: "Italy",
-			},
-			CityName: "Rome",
-		},
-		Date: time.Date(2023, 11, 23, 21, 00, 00, 0, time.UTC),
+		EventId:     uuid.New().String(),
+		BandName:    "Eluveitie",
+		EventCityID: "2",
+		Date:        time.Date(2023, 11, 23, 21, 00, 00, 0, time.UTC),
 	}
 	mock, err := json.Marshal(eventInfo)
 	if err != nil {
@@ -56,7 +49,7 @@ func TestWatchEvent(t *testing.T) {
 	}
 	matches := 0
 	for i := 0; i < len(events); i++ {
-		if events[i].EventCity.CityName == "Rome" {
+		if events[i].EventCityID == "2" {
 			matches++
 		}
 	}

@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    restart: unless-stopped
+    command: server --address ":9000" --console-address ":9001" /data
+    env_file:
+      - .env
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ROOT_USER=${MINIO_ROOT_USER}
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+    volumes:
+      - /storage/minio:/data
+  postgres:
+    container_name: auth-db
+    image: postgres:latest
+    ports:
+      - "27015:27015"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${POSTGRES_DB}", "-U", "${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 2s
+      retries: 3
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+volumes:
+  postgres-data:
