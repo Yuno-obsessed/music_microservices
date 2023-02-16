@@ -3,15 +3,15 @@ package mail
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/MailService/infra/mail"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/gin-gonic/gin"
-	"mail-service/domain/entity"
-	"mail-service/infra/logger"
-	"mail-service/infra/mail"
 )
 
 type Mailing struct {
 	Mail   mail.Mail
-	Logger logger.Logger
+	Logger logger.CustomLogger
 }
 
 func NewMailing() Mailing {
@@ -34,19 +34,16 @@ func (m Mailing) MailSuccessfulRegistration(c *gin.Context) {
 		msg = mail.NewEventFromSubscriptions
 		break
 	default:
-		m.Logger.Log.Error("wrong endpoint calling mail service")
+		m.Logger.Error("wrong endpoint calling mail service")
 	}
 	var newMail entity.Mail
 	err := json.NewDecoder(c.Request.Body).Decode(&newMail)
 	if err != nil {
-		m.Logger.Log.Error(fmt.Sprintf("Error sending mail, %v", err))
+		m.Logger.Error(fmt.Sprintf("Error sending mail, %v", err))
 		c.AbortWithStatusJSON(400, fmt.Sprintf("error processing payload, %v", err))
 	}
 	err = m.Mail.SendMail(newMail, msg)
 	if err != nil {
-		m.Logger.Log.Error(fmt.Sprintf("Error sending mail, %v", err))
+		m.Logger.Error(fmt.Sprintf("Error sending mail, %v", err))
 	}
 }
-
-// TODO: mailhandler, migrations for authService, think of roles implementing
-// TODO: CustomerService structure

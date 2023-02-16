@@ -1,9 +1,9 @@
 package server
 
 import (
+	"github.com/Yuno-obsessed/music_microservices/MailService/infra/server/handlers/mail"
 	"github.com/gin-gonic/gin"
 	"log"
-	"mail-service/infra/server/handlers/mail"
 	"os"
 )
 

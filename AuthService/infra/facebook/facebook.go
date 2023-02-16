@@ -1,7 +1,7 @@
 package facebook
 
 import (
-	"auth-service/infra/config"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/config"
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/providers/facebook"
 	"os"

@@ -1,8 +1,8 @@
 package mail
 
 import (
+	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
 	"gopkg.in/gomail.v2"
-	"mail-service/domain/entity"
 )
 
 type Mail struct {

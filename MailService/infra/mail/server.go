@@ -2,15 +2,15 @@ package mail
 
 import (
 	"fmt"
+	"github.com/Yuno-obsessed/music_microservices/MailService/infra/config"
 	"gopkg.in/gomail.v2"
-	"mail-service/infra/config"
 )
 
 func NewSmtpServer() (Mail, error) {
-	conf := config.NewConfig()
+	conf := config.SmtpConfigInit()
 	mail := Mail{
-		Dialer: gomail.NewDialer(conf.Smtp.Host,
-			conf.Smtp.Port, conf.Smtp.Username, conf.Smtp.Password),
+		Dialer: gomail.NewDialer(conf.Host,
+			conf.Port, conf.Username, conf.Password),
 	}
 	conn, err := mail.Dialer.Dial()
 	if err != nil {

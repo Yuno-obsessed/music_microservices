@@ -3,7 +3,7 @@ module github.com/Yuno-obsessed/music_microservices/UploadService
 go 1.20
 
 require (
-	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d
+	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230212213322-bd7a9e6a8507
 	github.com/joho/godotenv v1.5.1
 	github.com/minio/minio-go/v7 v7.0.47
 	go.uber.org/zap v1.24.0

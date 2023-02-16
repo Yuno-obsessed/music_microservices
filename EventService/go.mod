@@ -3,7 +3,7 @@ module github.com/Yuno-obsessed/music_microservices/EventService
 go 1.20
 
 require (
-	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d
+	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230212213322-bd7a9e6a8507
 	github.com/gin-gonic/gin v1.8.2
 	github.com/google/uuid v1.3.0
 	github.com/jinzhu/gorm v1.9.16

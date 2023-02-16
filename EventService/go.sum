@@ -1,10 +1,6 @@
 github.com/PuerkitoBio/goquery v1.5.1/go.mod h1:GsLWisAFVj4WgDibEWF4pvYnkVQBpKBKeU+7zCJoLcc=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211145016-b902c2da8e28 h1:2cMKO1erd+h+bdczr+yAjtZxa2wBvThhFKg88Py+NK4=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211145016-b902c2da8e28/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211161642-c07f409e96e6 h1:Ww2ecFA8P9acBVsHgeWm/va1+UgrJsOtangd6wli+Ws=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211161642-c07f409e96e6/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d h1:WM5v9tlbTfqrkdPeypOOMSQ53r5Pe5jUcuuXYCWFP3M=
-github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230211163123-9eff8a7b398d/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230212213322-bd7a9e6a8507 h1:3pDWlfTMSmbJ876cDbLh9R+l9li6jXDjbXfY2M2/2z4=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230212213322-bd7a9e6a8507/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
 github.com/andybalholm/cascadia v1.1.0/go.mod h1:GsXiBklL0woXo1j/WYWtSYYC4ouU9PqHO0sqidkEA4Y=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
@@ -100,12 +96,9 @@ github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o
 github.com/ugorji/go v1.2.7/go.mod h1:nF9osbDWLy6bDVv/Rtoh6QgnvNDpmCalQV5urGCCS6M=
 github.com/ugorji/go/codec v1.2.7 h1:YPXUKf7fYbp/y8xloBqZOw2qaVggbfwMlI8WM3wZUJ0=
 github.com/ugorji/go/codec v1.2.7/go.mod h1:WGN1fab3R1fzQlVQTkfxVtIBhWDRqOviHU95kRgeqEY=
-go.uber.org/atomic v1.7.0/go.mod h1:fEN4uk6kAWBTFdckzkM89CLk9XfWZrxpCo0nPH17wJc=
 go.uber.org/atomic v1.10.0 h1:9qC72Qh0+3MqyJbAn8YU5xVq1frD8bn3JtD2oXtafVQ=
 go.uber.org/atomic v1.10.0/go.mod h1:LUxbIzbOniOlMKjJjyPfpl4v+PKK2cNJn91OQbhoJI0=
 go.uber.org/goleak v1.1.11 h1:wy28qYRKZgnJTxGxvye5/wgWr1EKjmUDGYox5mGlRlI=
-go.uber.org/multierr v1.6.0 h1:y6IPFStTAIT5Ytl7/XYmHvzXQ7S3g/IeZW9hyZ5thw4=
-go.uber.org/multierr v1.6.0/go.mod h1:cdWPpRnG4AhwMwsgIHip0KRBQjJy5kYEpYjJxpXp9iU=
 go.uber.org/multierr v1.9.0 h1:7fIwc/ZtS0q++VgcfqFDxSBZVv/Xo49/SYnDFupUwlI=
 go.uber.org/multierr v1.9.0/go.mod h1:X2jQV1h+kxSjClGpnseKVIxpmcjrj7MNnI0bnlfKTVQ=
 go.uber.org/zap v1.24.0 h1:FiJd5l1UOLj0wCgbSE0rwwXHzEdAZS6hiiSnxJN/D60=

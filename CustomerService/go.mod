@@ -3,9 +3,11 @@ module github.com/Yuno-obsessed/music_microservices/CustomerService
 go 1.20
 
 require (
+	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230212213322-bd7a9e6a8507
 	github.com/gin-gonic/gin v1.8.2
 	github.com/jackc/pgx/v5 v5.2.0
-	github.com/joho/godotenv v1.5.0
+	github.com/jinzhu/gorm v1.9.16
+	github.com/joho/godotenv v1.5.1
 	go.uber.org/zap v1.24.0
 )
 
@@ -18,6 +20,7 @@ require (
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/puddle/v2 v2.1.2 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.16 // indirect

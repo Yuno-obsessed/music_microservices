@@ -1,9 +1,9 @@
 package facebook
 
 import (
-	"auth-service/infra/facebook"
 	"encoding/json"
 	"fmt"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/facebook"
 	"github.com/gin-gonic/gin"
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"

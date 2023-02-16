@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/EventService/infra/server/handlers/event"
+	"github.com/Yuno-obsessed/music_microservices/EventService/service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"net/http"
@@ -27,6 +28,9 @@ func TestWatchEvent(t *testing.T) {
 	}
 
 	// Add your handler to the router
+	repos := service.NewRepositories()
+	event := event.NewEvent(repos.Event)
+	router
 	router.GET("/api/v1/event/watch/:city", event.EventInfo)
 
 	// Create a request to send to the handler

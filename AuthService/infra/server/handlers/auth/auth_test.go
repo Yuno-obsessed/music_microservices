@@ -1,11 +1,11 @@
 package auth_test
 
 import (
-	"auth-service/domain/entity"
-	jwt "auth-service/infra/auth"
-	"auth-service/infra/server/handlers/auth"
 	"bytes"
 	"encoding/json"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
+	jwt "github.com/Yuno-obsessed/music_microservices/AuthService/infra/auth"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server/handlers/auth"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/http/httptest"

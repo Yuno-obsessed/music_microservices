@@ -9,6 +9,7 @@
  - [ ] Find a way to upload images using base-64 or multipart without any frontend;
  - [ ] Integrate swagger (where exactly?);
  - [ ] Integrate prometheus (where exactly?);
- - [ ] Integrate jaeger tracer.
+ - [ ] Integrate jaeger tracer;
+ - [ ] Reject gorm, embrace raw queries;
 
 ---
