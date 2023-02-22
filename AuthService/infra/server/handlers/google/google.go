@@ -3,6 +3,7 @@ package google
 import (
 	"auth-service/infra/google"
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
@@ -39,6 +40,6 @@ func GoogleLoginCallback(c *gin.Context) {
 	if err != nil {
 		c.AbortWithStatusJSON(500, err)
 	}
-	//json.NewDecoder(c.Request.Body).Decode(data)
-	//fmt.Println(data)
+	// json.NewDecoder(c.Request.Body).Decode(data)
+	// fmt.Println(data)
 }

@@ -1,14 +1,11 @@
 package repository
 
 import (
-	"auth-service/domain/entity"
-	"context"
-	"github.com/google/uuid"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
 )
 
 type RegisterRepository interface {
-	SaveRegister(ctx context.Context, register entity.Register) error
-	GetRegisterByUuid(ctx context.Context, registerUuid uuid.UUID) (entity.Register, error)
-	GetRegisterByEmailAndPassword(ctx context.Context, email string, password string) (entity.Register, error)
-	IsRegistered(ctx context.Context, email string, password string) bool // or error
+	SaveRegister(register entity.User) error
+	GetRegisterById(registerId int) (entity.User, error)
+	GetRegisterByEmailAndPassword(email string, password string) (entity.User, error)
 }

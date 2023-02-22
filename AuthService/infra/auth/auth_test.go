@@ -2,8 +2,9 @@ package auth_test
 
 import (
 	"auth-service/infra/auth"
-	"github.com/kataras/jwt"
 	"testing"
+
+	"github.com/kataras/jwt"
 )
 
 func TestJWT_GenerateToken(t *testing.T) {

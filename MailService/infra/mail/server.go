@@ -2,6 +2,7 @@ package mail
 
 import (
 	"fmt"
+
 	"github.com/Yuno-obsessed/music_microservices/MailService/infra/config"
 	"gopkg.in/gomail.v2"
 )

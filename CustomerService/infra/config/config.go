@@ -1,9 +1,10 @@
 package config
 
 import (
+	"os"
+
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
-	"os"
 )
 
 func NewConfig() Config {

@@ -3,12 +3,13 @@ package mail_test
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
-	"github.com/Yuno-obsessed/music_microservices/MailService/infra/server/handlers/mail"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/MailService/infra/server/handlers/mail"
+	"github.com/gin-gonic/gin"
 )
 
 func TestMailing_MailSuccessfulRegistration(t *testing.T) {
@@ -31,5 +32,4 @@ func TestMailing_MailSuccessfulRegistration(t *testing.T) {
 
 	mailing := mail.NewMailing()
 	mailing.MailSuccessfulRegistration(c)
-
 }

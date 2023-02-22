@@ -3,13 +3,14 @@ package auth_test
 import (
 	"bytes"
 	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+
 	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
 	jwt "github.com/Yuno-obsessed/music_microservices/AuthService/infra/auth"
 	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server/handlers/auth"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"net/http/httptest"
-	"testing"
 )
 
 func TestLoginHandler(t *testing.T) {

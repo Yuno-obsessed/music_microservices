@@ -1,11 +1,12 @@
 package server
 
 import (
+	"log"
+	"os"
+
 	"github.com/Yuno-obsessed/music_microservices/EventService/infra/server/handlers/event"
 	"github.com/Yuno-obsessed/music_microservices/EventService/service"
 	"github.com/gin-gonic/gin"
-	"log"
-	"os"
 )
 
 type Router struct {

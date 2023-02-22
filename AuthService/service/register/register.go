@@ -1,75 +1,81 @@
 package register
 
 import (
-	"auth-service/domain/entity"
-	"auth-service/infra/config/database"
 	"context"
 	"fmt"
-	"github.com/google/uuid"
+
+	"github.com/Masterminds/squirrel"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/jackc/pgx/v5/pgxpool"
+	"go.uber.org/zap"
 )
 
 type RegisterService struct {
-	conn *pgxpool.Pool
+	db     *pgxpool.Pool
+	logger logger.CustomLogger
 }
 
-func NewRegisterService() *RegisterService {
-	db, _ := database.DbInit()
-	return &RegisterService{db}
+func NewRegisterService(db *pgxpool.Pool) *RegisterService {
+	return &RegisterService{
+		db,
+		logger.NewLogger(),
+	}
 }
 
-func (r *RegisterService) SaveRegister(ctx context.Context, register entity.Register) error {
-	query := "INSERT INTO register (uuid, username, email, password, country) VALUES (?,?,?,?);"
-	_, err := r.conn.Exec(ctx, query,
-		register.UUID, register.Username, register.Email,
-		register.Password, register.Country)
-
+func (r *RegisterService) SaveRegister(u entity.User) error {
+	query, args, err := squirrel.Insert("users").
+		Columns("username", "password", "age", "country", "email", "role_id").
+		Values(u.Username, u.Password, u.Age, u.Country, u.Email, u.RoleId).ToSql()
 	if err != nil {
+		r.logger.Error("error building query in SaveRegister", zap.Error(err))
 		return fmt.Errorf("error in query SaveRegister, %v", err)
+	}
+
+	_, err = r.db.Exec(context.Background(), query, args)
+	if err != nil {
+		r.logger.Error("error executing query in SaveRegister", zap.Error(err))
+		return err
 	}
 	return nil
 }
 
-func (r *RegisterService) GetRegisterByUuid(ctx context.Context, registerUuid uuid.UUID) (entity.Register, error) {
-	query := "SELECT * FROM register WHERE uuid=?;"
-	row, err := r.conn.Query(ctx, query, registerUuid)
+func (r *RegisterService) GetRegisterById(registerId int) (entity.User, error) {
+	var user entity.User
+
+	query, args, err := squirrel.Select("*").From("users").
+		Where(squirrel.Eq{"user_id": registerId}).ToSql()
 	if err != nil {
-		return entity.Register{}, fmt.Errorf("error in GetRegisterByUuid query, %v", err)
+		r.logger.Error("error building query in GetRegisterById", zap.Error(err))
+		return entity.User{}, fmt.Errorf("error in query GetRegisterById, %v", err)
 	}
-	var result entity.Register
-	err = row.Scan(&result)
+
+	row := r.db.QueryRow(context.Background(), query, args)
+	err = row.Scan(&user)
 	if err != nil {
-		return entity.Register{}, fmt.Errorf("error scanning to json, %v", err)
+		r.logger.Error("error scanning in GetRegisterById", zap.Error(err))
+		return entity.User{}, err
 	}
-	return result, nil
+
+	return user, nil
 }
 
-func (r *RegisterService) GetRegisterByEmailAndPassword(ctx context.Context, email string, password string) (entity.Register, error) {
-	query := "SELECT * FROM register WHERE email=? AND password=?;"
-	row, err := r.conn.Query(ctx, query,
-		email, password)
-	if err != nil {
-		return entity.Register{}, fmt.Errorf("error in GetRegisterByEmailAndPassword query, %v", err)
-	}
-	var result entity.Register
-	err = row.Scan(&result)
-	if err != nil {
-		return entity.Register{}, fmt.Errorf("error scanning to json, %v", err)
-	}
-	return result, nil
-}
+func (r *RegisterService) GetRegisterByEmailAndPassword(email string, password string) (entity.User, error) {
+	var user entity.User
 
-func (r *RegisterService) IsRegistered(ctx context.Context, email string, password string) bool {
-	query := "SELECT * FROM register WHERE email=? AND password=?;"
-	row, err := r.conn.Query(ctx, query,
-		email, password)
+	query, args, err := squirrel.Select("*").From("users").
+		Where(squirrel.Eq{"email": email, "password": password}).ToSql()
 	if err != nil {
-		return false
+		r.logger.Error("error building query in SaveRegister", zap.Error(err))
+		return entity.User{}, fmt.Errorf("error in query GetRegisterByEmailAndPassword, %v", err)
 	}
-	var result entity.Register
-	err = row.Scan(&result)
+
+	row := r.db.QueryRow(context.Background(), query, args)
+	err = row.Scan(&user)
 	if err != nil {
-		return false
+		r.logger.Error("error scanning in GetRegisterById", zap.Error(err))
+		return entity.User{}, err
 	}
-	return true
+
+	return user, nil
 }

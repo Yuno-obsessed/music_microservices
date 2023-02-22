@@ -1,11 +1,12 @@
 package service
 
 import (
+	"log"
+
 	"github.com/Yuno-obsessed/music_microservices/CustomerService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/CustomerService/service/customer"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 	"github.com/jinzhu/gorm"
-	"log"
 )
 
 type Repositories struct {

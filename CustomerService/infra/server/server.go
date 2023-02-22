@@ -1,9 +1,10 @@
 package server
 
 import (
-	"github.com/gin-gonic/gin"
 	"log"
 	"os"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Router struct {
@@ -16,7 +17,7 @@ func NewRouter() Router {
 
 func (r Router) CustomerGroup() {
 	mailGroup := r.Group("api/v1/mail")
-	//mailGroup.GET("/:message_type", mailing.MailSuccessfulRegistration)
+	// mailGroup.GET("/:message_type", mailing.MailSuccessfulRegistration)
 	mailGroup.GET("/healthcheck", func(c *gin.Context) {
 		c.JSON(200, "healthy")
 	})

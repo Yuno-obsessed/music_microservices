@@ -1,13 +1,13 @@
 package config
 
 import (
+	"os"
+
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
-	"os"
 )
 
 func NewConfig() Config {
-	godotenv.Load("../../.env")
 	return Config{
 		Logger:   LoggerConfigInit(),
 		Database: DatabaseConfigInit(),
@@ -15,6 +15,7 @@ func NewConfig() Config {
 }
 
 func DatabaseConfigInit() DatabaseConfig {
+	godotenv.Load("../../.env")
 	return DatabaseConfig{
 		Driver:   os.Getenv("POSTGRES_DRIVER"),
 		User:     os.Getenv("POSTGRES_USER"),
@@ -25,6 +26,7 @@ func DatabaseConfigInit() DatabaseConfig {
 }
 
 func LoggerConfigInit() LoggerConfig {
+	godotenv.Load("../../.env")
 	return LoggerConfig{
 		Config: zap.Config{
 			Level:            zap.NewAtomicLevel(),

@@ -3,10 +3,11 @@ package database
 import (
 	"context"
 	"fmt"
+	"log"
+
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/config"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"log"
 )
 
 type Database struct {

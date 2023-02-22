@@ -2,10 +2,11 @@ package auth
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/kataras/jwt"
 	"os"
 	"time"
+
+	"github.com/gin-gonic/gin"
+	"github.com/kataras/jwt"
 )
 
 type JWT struct {

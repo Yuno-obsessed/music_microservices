@@ -3,15 +3,16 @@ package event_test
 import (
 	"bytes"
 	"encoding/json"
+	"net/http"
+	"net/http/httptest"
+	"testing"
+	"time"
+
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/EventService/infra/server/handlers/event"
 	"github.com/Yuno-obsessed/music_microservices/EventService/service"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"net/http"
-	"net/http/httptest"
-	"testing"
-	"time"
 )
 
 func TestWatchEvent(t *testing.T) {
@@ -20,7 +21,7 @@ func TestWatchEvent(t *testing.T) {
 		EventId:     uuid.New().String(),
 		BandName:    "Eluveitie",
 		EventCityID: "2",
-		Date:        time.Date(2023, 11, 23, 21, 00, 00, 0, time.UTC),
+		Date:        time.Date(2023, 11, 23, 21, 0o0, 0o0, 0, time.UTC),
 	}
 	mock, err := json.Marshal(eventInfo)
 	if err != nil {

@@ -19,5 +19,4 @@ func NewCustomer(service customer.CustomerService) Customer {
 }
 
 func GetUserById(c *gin.Context) {
-
 }

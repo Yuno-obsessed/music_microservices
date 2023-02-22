@@ -5,6 +5,7 @@ import (
 	"auth-service/infra/config/database"
 	"context"
 	"fmt"
+
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 

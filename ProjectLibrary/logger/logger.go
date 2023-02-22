@@ -1,9 +1,10 @@
 package logger
 
 import (
+	"log"
+
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/config"
 	"go.uber.org/zap"
-	"log"
 )
 
 type CustomLogger struct {

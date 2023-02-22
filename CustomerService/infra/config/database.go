@@ -4,8 +4,9 @@ import (
 	"context"
 	"customer-service/infra/logger"
 	"fmt"
-	"github.com/jackc/pgx/v5/pgxpool"
 	"log"
+
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type Database struct {

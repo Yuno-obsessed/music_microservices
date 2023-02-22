@@ -3,6 +3,7 @@ package mail
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/MailService/infra/mail"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
@@ -15,8 +16,10 @@ type Mailing struct {
 }
 
 func NewMailing() Mailing {
-	return Mailing{mail.NewMail(),
-		logger.NewLogger()}
+	return Mailing{
+		mail.NewMail(),
+		logger.NewLogger(),
+	}
 }
 
 // MailHandler is taking a payload of json "msg","recipient","subject"

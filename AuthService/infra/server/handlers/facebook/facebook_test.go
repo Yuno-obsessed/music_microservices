@@ -3,15 +3,18 @@ package facebook_test
 import (
 	"auth-service/infra/server"
 	"encoding/json"
-	"github.com/joho/godotenv"
-	"github.com/markbates/goth"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/joho/godotenv"
+	"github.com/markbates/goth"
 )
 
-var rr *httptest.ResponseRecorder
-var router server.Router
+var (
+	rr     *httptest.ResponseRecorder
+	router server.Router
+)
 
 func setup() {
 	godotenv.Load("../../../.env")
@@ -21,7 +24,7 @@ func setup() {
 
 func TestFacebookLoginHandler(t *testing.T) {
 	setup()
-	//godotenv.Load("../../../.env")
+	// godotenv.Load("../../../.env")
 	req, err := http.NewRequest("GET", "http://localhost:8081/api/v1/login/auth/facebook", nil)
 	if err != nil {
 		t.Errorf("Error in request, %v", err)
@@ -36,7 +39,7 @@ func TestFacebookLoginHandler(t *testing.T) {
 
 func TestFacebookLoginCallback(t *testing.T) {
 	setup()
-	//godotenv.Load("../../../.env")
+	// godotenv.Load("../../../.env")
 	req, err := http.NewRequest("GET", "http://localhost:8081/api/v1/login/auth/facebook/callback", nil)
 	if err != nil {
 		t.Errorf("Error in request, %v", err)

@@ -3,6 +3,7 @@ package facebook
 import (
 	"encoding/json"
 	"fmt"
+
 	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/facebook"
 	"github.com/gin-gonic/gin"
 	"github.com/markbates/goth"
@@ -11,7 +12,7 @@ import (
 
 func FacebookLoginHandler(c *gin.Context) {
 	facebook.Facebook()
-	//gothic.BeginAuthHandler(c.Writer, c.Request)
+	// gothic.BeginAuthHandler(c.Writer, c.Request)
 	provider, err := goth.GetProvider("facebook")
 	if err != nil {
 		c.JSON(400, gin.H{"error": "Invalid provider"})
@@ -32,7 +33,6 @@ func FacebookLoginHandler(c *gin.Context) {
 		return
 	}
 	c.Redirect(307, redirectUrl)
-
 }
 
 func FacebookLoginCallback(c *gin.Context) {

@@ -1,5 +1,3 @@
 package entity
 
-var (
-	ROLE_ADMIN string
-)
+var ROLE_ADMIN string

@@ -3,10 +3,11 @@ package auth
 import (
 	"encoding/json"
 	"fmt"
+	"time"
+
 	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/auth"
 	"github.com/gin-gonic/gin"
-	"time"
 )
 
 // LoginHandler is get request with payload of json{"email", "password"}

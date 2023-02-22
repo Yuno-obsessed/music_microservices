@@ -1,13 +1,14 @@
 package server
 
 import (
-	"auth-service/infra/server/handlers/auth"
-	"auth-service/infra/server/handlers/facebook"
-	"auth-service/infra/server/handlers/google"
-	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server/handlers/auth"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server/handlers/facebook"
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server/handlers/google"
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 type Router struct {

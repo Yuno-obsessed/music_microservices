@@ -2,12 +2,13 @@ package event
 
 import (
 	"encoding/json"
+	"strconv"
+
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/EventService/service/event"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/lerrors"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/gin-gonic/gin"
-	"strconv"
 )
 
 type Event struct {

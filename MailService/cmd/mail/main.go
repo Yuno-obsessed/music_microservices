@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/joho/godotenv"
 	"mail-service/infra/server"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {

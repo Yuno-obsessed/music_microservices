@@ -2,8 +2,9 @@ package facebook_test
 
 import (
 	"auth-service/infra/facebook"
-	"github.com/markbates/goth"
 	"testing"
+
+	"github.com/markbates/goth"
 )
 
 func TestRegisterApp(t *testing.T) {

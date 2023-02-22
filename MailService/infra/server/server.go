@@ -1,10 +1,11 @@
 package server
 
 import (
-	"github.com/Yuno-obsessed/music_microservices/MailService/infra/server/handlers/mail"
-	"github.com/gin-gonic/gin"
 	"log"
 	"os"
+
+	"github.com/Yuno-obsessed/music_microservices/MailService/infra/server/handlers/mail"
+	"github.com/gin-gonic/gin"
 )
 
 type Router struct {

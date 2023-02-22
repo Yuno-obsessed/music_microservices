@@ -2,26 +2,33 @@ package event
 
 import (
 	"fmt"
-	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
-	"github.com/jinzhu/gorm"
 	"strconv"
+
+	"github.com/Masterminds/squirrel"
+	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type EventService struct {
-	db *gorm.DB
+	db     *pgxpool.Pool
+	logger logger.CustomLogger
 }
 
-func NewEventService(db *gorm.DB) EventService {
-	return EventService{db}
+func NewEventService() EventService {
+	return EventService{
+		database.DbInit(),
+		logger.NewLogger(),
+	}
 }
 
 func (es *EventService) GetOne(id string) (entity.Event, error) {
-
 	var event entity.Event
 
+	query, args, err := squirrel.Select()
 	err := es.db.Table("events").Debug().
 		Where("event_id=?", id).Take(&event).Error
-
 	if err != nil {
 		return entity.Event{}, fmt.Errorf("such event wasn't found in database, %v", err)
 	}
@@ -30,14 +37,12 @@ func (es *EventService) GetOne(id string) (entity.Event, error) {
 }
 
 func (es *EventService) GetAllOfBand(band string) ([]entity.Event, error) {
-
 	var events []entity.Event
 
 	err := es.db.Table("events").Debug().
 		Limit(10).Order("desc").
 		Where("band_name=?", band).
 		Take(&events).Error
-
 	if err != nil {
 		return nil, fmt.Errorf("such event wasn't found in database, %v", err)
 	}
@@ -46,14 +51,12 @@ func (es *EventService) GetAllOfBand(band string) ([]entity.Event, error) {
 }
 
 func (es *EventService) GetAllOfCity(city string) ([]entity.Event, error) {
-
 	var id int
 
 	err := es.db.Table("cities").Debug().
 		Limit(10).Order("desc").
 		Where("city_name=?", city).
 		Take(&id).Error
-
 	if err != nil {
 		_ = es.db.Table("cities").Debug().
 			Last(&id).Error
@@ -64,7 +67,6 @@ func (es *EventService) GetAllOfCity(city string) ([]entity.Event, error) {
 		}
 		err := es.db.Table("cities").Debug().
 			Create(&newCity).Error
-
 		if err != nil {
 			return nil, fmt.Errorf("error creating a city not yet existing in database, %v", err)
 		}
@@ -86,7 +88,6 @@ func (es *EventService) GetAllOfCity(city string) ([]entity.Event, error) {
 
 // add limit and offset
 func (es *EventService) GetAll() ([]entity.Event, error) {
-
 	var events []entity.Event
 
 	err := es.db.Table("events").Debug().
@@ -100,7 +101,6 @@ func (es *EventService) GetAll() ([]entity.Event, error) {
 }
 
 func (es *EventService) Create(event entity.Event) error {
-
 	err := es.db.Table("events").Debug().
 		Create(&event).Error
 
@@ -108,7 +108,6 @@ func (es *EventService) Create(event entity.Event) error {
 }
 
 func (es *EventService) Update(event entity.Event) error {
-
 	err := es.db.Table("events").Debug().
 		Save(&event).Error
 
