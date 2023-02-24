@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/Masterminds/squirrel v1.5.3
-	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230216230246-e893c3f1d133
+	github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230222220518-35a8b1c98a81
 	github.com/gin-gonic/gin v1.8.2
 	github.com/golang/mock v1.6.0
 	github.com/jackc/pgx/v5 v5.2.0

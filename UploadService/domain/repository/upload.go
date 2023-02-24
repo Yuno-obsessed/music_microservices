@@ -3,24 +3,25 @@ package repository
 import (
 	"context"
 
+	"github.com/Yuno-obsessed/music_microservices/UploadRepository/domain/dto"
+
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/lerrors"
+	"go.uber.org/multierr"
+
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 
 	"github.com/Masterminds/squirrel"
-	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
 	"github.com/Yuno-obsessed/music_microservices/UploadRepository/domain/entity"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"go.uber.org/zap"
 )
 
 type UploadRepository struct {
-	Db     *pgxpool.Pool
-	Logger logger.CustomLogger
+	*pgxpool.Pool
 }
 
 func NewUploadRepository() *UploadRepository {
 	return &UploadRepository{
-		Db:     database.DbInit(),
-		Logger: logger.NewLogger(),
+		database.DbInit(),
 	}
 }
 
@@ -30,15 +31,13 @@ func (s *UploadRepository) GetByName(name string) (entity.Upload, error) {
 	query, args, err := squirrel.Select("*").From("uploads").
 		Where(squirrel.Eq{"upload_name": name}).ToSql()
 	if err != nil {
-		s.Logger.Error("error building query", zap.Error(err))
-		return entity.Upload{}, err
+		return entity.Upload{}, multierr.Append(lerrors.ErrInQuery, err)
 	}
 
-	row := s.Db.QueryRow(context.Background(), query, args)
+	row := s.QueryRow(context.Background(), query, args)
 	err = row.Scan(&upload)
 	if err != nil {
-		s.Logger.Error("error scanning", zap.Error(err))
-		return entity.Upload{}, err
+		return entity.Upload{}, multierr.Append(lerrors.ErrScanningQuery, err)
 	}
 
 	return upload, nil
@@ -50,14 +49,12 @@ func (s *UploadRepository) GetByEntity(uentity string) ([]entity.Upload, error) 
 	query, args, err := squirrel.Select("*").From("uploads").
 		Where(squirrel.Eq{"upload_entity": uentity}).ToSql()
 	if err != nil {
-		s.Logger.Error("error building query", zap.Error(err))
-		return []entity.Upload{}, err
+		return []entity.Upload{}, multierr.Append(lerrors.ErrInQuery, err)
 	}
 
-	rows, err := s.Db.Query(context.Background(), query, args)
+	rows, err := s.Query(context.Background(), query, args)
 	if err != nil {
-		s.Logger.Error("error querying", zap.Error(err))
-		return []entity.Upload{}, err
+		return []entity.Upload{}, multierr.Append(lerrors.ErrInQuery, err)
 	}
 	defer rows.Close()
 	index := 0
@@ -66,8 +63,7 @@ func (s *UploadRepository) GetByEntity(uentity string) ([]entity.Upload, error) 
 		err = rows.Scan(&curr.UploadId, &curr.UserId,
 			&curr.Uentity, &curr.Uentity)
 		if err != nil {
-			s.Logger.Error("error scanning", zap.Error(err))
-			return []entity.Upload{}, err
+			return []entity.Upload{}, multierr.Append(lerrors.ErrScanningQuery, err)
 		}
 		index++
 	}
@@ -75,19 +71,17 @@ func (s *UploadRepository) GetByEntity(uentity string) ([]entity.Upload, error) 
 	return upload, nil
 }
 
-func (s *UploadRepository) SaveUpload(event entity.Upload) error {
+func (s *UploadRepository) SaveUpload(upload dto.UploadDto) error {
 	query, args, err := squirrel.Insert("uploads").
 		Columns("user_id", "upload_name", "upload_entity").
-		Values(event.UserId, event.Name, event.Uentity).ToSql()
+		Values(upload.UserId, upload.Name, upload.Uentity).ToSql()
 	if err != nil {
-		s.Logger.Error("error building query", zap.Error(err))
-		return err
+		return multierr.Append(lerrors.ErrInQuery, err)
 	}
 
-	_, err = s.Db.Exec(context.Background(), query, args)
+	_, err = s.Exec(context.Background(), query, args)
 	if err != nil {
-		s.Logger.Error("error executing query", zap.Error(err))
-		return err
+		return multierr.Append(lerrors.ErrExecQuery, err)
 	}
 
 	return nil
@@ -97,14 +91,12 @@ func (s *UploadRepository) UpdateUpload(oldname, name string) error {
 	query, args, err := squirrel.Update("uploads").
 		Set("upload_name", name).ToSql()
 	if err != nil {
-		s.Logger.Error("error building query", zap.Error(err))
-		return err
+		return multierr.Append(lerrors.ErrInQuery, err)
 	}
 
-	_, err = s.Db.Exec(context.Background(), query, args)
+	_, err = s.Exec(context.Background(), query, args)
 	if err != nil {
-		s.Logger.Error("error executing query", zap.Error(err))
-		return err
+		return multierr.Append(lerrors.ErrExecQuery, err)
 	}
 
 	return nil
@@ -114,13 +106,12 @@ func (s *UploadRepository) DeleteUpload(id string) error {
 	query, args, err := squirrel.Delete("uploads").
 		Where(squirrel.Eq{"upload_id": id}).ToSql()
 	if err != nil {
-		s.Logger.Error("error building query", zap.Error(err))
-		return err
+		return multierr.Append(lerrors.ErrInQuery, err)
 	}
 
-	_, err = s.Db.Exec(context.Background(), query, args)
+	_, err = s.Exec(context.Background(), query, args)
 	if err != nil {
-		s.Logger.Error("error executing query", zap.Error(err))
+		return multierr.Append(lerrors.ErrExecQuery, err)
 	}
 
 	return nil

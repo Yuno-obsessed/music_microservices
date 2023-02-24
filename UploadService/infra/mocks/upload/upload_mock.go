@@ -7,6 +7,7 @@ package mocks
 import (
 	reflect "reflect"
 
+	dto "github.com/Yuno-obsessed/music_microservices/UploadRepository/domain/dto"
 	entity "github.com/Yuno-obsessed/music_microservices/UploadRepository/domain/entity"
 	gomock "github.com/golang/mock/gomock"
 )
@@ -79,17 +80,17 @@ func (mr *MockUploadMockRecorder) GetByName(name interface{}) *gomock.Call {
 }
 
 // SaveUpload mocks base method.
-func (m *MockUpload) SaveUpload(event entity.Upload) error {
+func (m *MockUpload) SaveUpload(upload dto.UploadDto) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "SaveUpload", event)
+	ret := m.ctrl.Call(m, "SaveUpload", upload)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
 // SaveUpload indicates an expected call of SaveUpload.
-func (mr *MockUploadMockRecorder) SaveUpload(event interface{}) *gomock.Call {
+func (mr *MockUploadMockRecorder) SaveUpload(upload interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveUpload", reflect.TypeOf((*MockUpload)(nil).SaveUpload), event)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SaveUpload", reflect.TypeOf((*MockUpload)(nil).SaveUpload), upload)
 }
 
 // UpdateUpload mocks base method.

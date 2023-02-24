@@ -30,10 +30,10 @@ func NewClient() *minio.Client {
 }
 
 func CreateBucketIfNotExist(client *minio.Client, bucket consts.BucketName) error {
-	exists, _ := client.BucketExists(context.Background(), bucket)
+	exists, _ := client.BucketExists(context.Background(), string(bucket))
 	if !exists {
 		err := client.MakeBucket(context.Background(),
-			bucket, minio.MakeBucketOptions{Region: "us-east-1"})
+			string(bucket), minio.MakeBucketOptions{Region: "us-east-1"})
 		if err != nil {
 			return err
 		}
@@ -44,11 +44,11 @@ func CreateBucketIfNotExist(client *minio.Client, bucket consts.BucketName) erro
 func CreateBucketsIfNotExist(client *minio.Client) error {
 	buckets := consts.GetBucketNames()
 	for i := 0; i < len(buckets); i++ {
-		exists, _ := client.BucketExists(context.Background(), buckets[i])
+		exists, _ := client.BucketExists(context.Background(), string(buckets[i]))
 		if !exists {
 			location := "us-east-1"
 			err := client.MakeBucket(context.Background(),
-				buckets[i], minio.MakeBucketOptions{Region: location})
+				string(buckets[i]), minio.MakeBucketOptions{Region: location})
 			if err != nil {
 				return err
 			}

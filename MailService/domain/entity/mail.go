@@ -1,8 +1,10 @@
 package entity
 
+import "github.com/Yuno-obsessed/music_microservices/ProjectLibrary/mail"
+
 type Mail struct {
-	Subject  string `json:"subject"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Body     string `json:"body"`
+	Id      int              `json:"mail_id"`
+	Email   string           `json:"email"`
+	Subject string           `json:"subject"`
+	Type    mail.MessageType `json:"type"`
 }

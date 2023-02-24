@@ -7,9 +7,11 @@ import (
 	"github.com/Yuno-obsessed/music_microservices/MailService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/MailService/infra/mail"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/logger"
+	mtypes "github.com/Yuno-obsessed/music_microservices/ProjectLibrary/mail"
 	"github.com/gin-gonic/gin"
 )
 
+// Pass here a service
 type Mailing struct {
 	Mail   mail.Mail
 	Logger logger.CustomLogger
@@ -25,16 +27,17 @@ func NewMailing() Mailing {
 // MailHandler is taking a payload of json "msg","recipient","subject"
 func (m Mailing) MailSuccessfulRegistration(c *gin.Context) {
 	mType := c.Param("message_type")
-	var msg mail.MessageType
+	// how do I call it the best way as an api? take mtype from headers or json payload?
+	var msg mtypes.MessageType
 	switch mType {
-	case mail.SuccessfulRegistration.Text():
-		msg = mail.SuccessfulRegistration
+	case mtypes.SuccessfulRegistration.Text():
+		msg = mtypes.SuccessfulRegistration
 		break
-	case mail.SuccessfulLogin.Text():
-		msg = mail.SuccessfulLogin
+	case mtypes.SuccessfulLogin.Text():
+		msg = mtypes.SuccessfulLogin
 		break
-	case mail.NewEventFromSubscriptions.Text():
-		msg = mail.NewEventFromSubscriptions
+	case mtypes.NewEventFromSubscriptions.Text():
+		msg = mtypes.NewEventFromSubscriptions
 		break
 	default:
 		m.Logger.Error("wrong endpoint calling mail service")
@@ -45,7 +48,7 @@ func (m Mailing) MailSuccessfulRegistration(c *gin.Context) {
 		m.Logger.Error(fmt.Sprintf("Error sending mail, %v", err))
 		c.AbortWithStatusJSON(400, fmt.Sprintf("error processing payload, %v", err))
 	}
-	err = m.Mail.SendMail(newMail, msg)
+	err = m.Mail.SendMail(newMail)
 	if err != nil {
 		m.Logger.Error(fmt.Sprintf("Error sending mail, %v", err))
 	}
