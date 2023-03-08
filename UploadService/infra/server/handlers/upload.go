@@ -19,8 +19,8 @@ type Upload struct {
 	Logger     logger.CustomLogger
 }
 
-func NewUpload() Upload {
-	return Upload{
+func NewUpload() *Upload {
+	return &Upload{
 		upload.NewUploadService(
 			repository.NewUploadRepository()),
 		upload.NewFileUploadService(
@@ -29,7 +29,7 @@ func NewUpload() Upload {
 	}
 }
 
-func (u Upload) SaveUpload(c *gin.Context) {
+func (u *Upload) SaveUpload(c *gin.Context) {
 	file, err := c.FormFile("file")
 	if err != nil {
 		u.Logger.Error("error getting file from multipart", zap.Error(err))
@@ -68,5 +68,5 @@ func (u Upload) SaveUpload(c *gin.Context) {
 
 // Add get upload method
 // How do I make it callable from all the services?
-func (u Upload) GetUploadByName(c *gin.Context) {
+func (u *Upload) GetUploadByName(c *gin.Context) {
 }

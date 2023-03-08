@@ -14,4 +14,5 @@ var (
 	ErrExecQuery     = errors.New("error executing query")
 	ErrInQuery       = errors.New("error building query")
 	ErrScanningQuery = errors.New("error scanning query results")
+	ErrMakingRequest = errors.New("error making a request")
 )

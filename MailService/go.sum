@@ -2,6 +2,8 @@ github.com/Masterminds/squirrel v1.5.3 h1:YPpoceAcxuzIljlr5iWpNKaql7hLeG1KLSrhvd
 github.com/Masterminds/squirrel v1.5.3/go.mod h1:NNaOrjSoIDfDA40n7sr2tPNZRfjzjA400rg+riTZj10=
 github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230222220518-35a8b1c98a81 h1:y/JvAZHn6uAxb12h7DJG0LUOWjHZcHiOUA3Z/KXwaNA=
 github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230222220518-35a8b1c98a81/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230224234637-9e550be818fb h1:G0vdsoKpguIVOid3q99v0vg3Dcj3gz5OH0nS9Usx0O0=
+github.com/Yuno-obsessed/music_microservices/ProjectLibrary v0.0.0-20230224234637-9e550be818fb/go.mod h1:Kv9t9I8Losi6SJ+VyVGuHlIHpuFOGuIsFqR6SQz0NTw=
 github.com/benbjohnson/clock v1.1.0 h1:Q92kusRqC1XV2MjkWETPvjJVqKetz1OzxZB7mHJLju8=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

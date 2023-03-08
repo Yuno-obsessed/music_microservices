@@ -1,9 +1,28 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"strconv"
+
+	"gopkg.in/gomail.v2"
 )
+
+func NewSmtpServer() (*gomail.Dialer, error) {
+	conf := SmtpConfigInit()
+	dialer := gomail.NewDialer(conf.Host,
+		conf.Port, conf.Username, conf.Password)
+	conn, err := dialer.Dial()
+	if err != nil {
+		return nil, fmt.Errorf("error connecting to dialer, %v", err)
+	}
+
+	err = conn.Close()
+	if err != nil {
+		return nil, fmt.Errorf("error closing connection, %v", err)
+	}
+	return dialer, nil
+}
 
 type Smtp struct {
 	Host     string

@@ -1,11 +1,8 @@
-package entity
+package dto
 
-import (
-	"time"
-)
+import "time"
 
 type Event struct {
-	EventId   int       `json:"event_id"`
 	BandName  string    `json:"band_name"`
 	EventCity string    `json:"event_city"`
 	Date      time.Time `json:"event_date"`

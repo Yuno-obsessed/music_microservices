@@ -18,10 +18,10 @@ import (
 func TestWatchEvent(t *testing.T) {
 	router := gin.Default()
 	eventInfo := entity.Event{
-		EventId:     uuid.New().String(),
-		BandName:    "Eluveitie",
-		EventCityID: "2",
-		Date:        time.Date(2023, 11, 23, 21, 0o0, 0o0, 0, time.UTC),
+		EventId:   uuid.New().String(),
+		BandName:  "Eluveitie",
+		EventCity: "2",
+		Date:      time.Date(2023, 11, 23, 21, 0o0, 0o0, 0, time.UTC),
 	}
 	mock, err := json.Marshal(eventInfo)
 	if err != nil {
@@ -54,7 +54,7 @@ func TestWatchEvent(t *testing.T) {
 	}
 	matches := 0
 	for i := 0; i < len(events); i++ {
-		if events[i].EventCityID == "2" {
+		if events[i].EventCity == "2" {
 			matches++
 		}
 	}
