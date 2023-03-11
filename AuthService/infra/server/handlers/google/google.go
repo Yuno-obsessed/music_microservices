@@ -1,8 +1,9 @@
 package google
 
 import (
-	"auth-service/infra/google"
 	"fmt"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/google"
 
 	"github.com/gin-gonic/gin"
 	"github.com/markbates/goth"

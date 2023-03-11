@@ -1,8 +1,9 @@
 package repository
 
 import (
-	"auth-service/domain/entity"
 	"context"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
 )
 
 type LoginRepository interface {

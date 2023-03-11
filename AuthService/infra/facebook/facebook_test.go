@@ -1,8 +1,9 @@
 package facebook_test
 
 import (
-	"auth-service/infra/facebook"
 	"testing"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/facebook"
 
 	"github.com/markbates/goth"
 )

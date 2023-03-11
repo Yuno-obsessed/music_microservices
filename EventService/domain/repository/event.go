@@ -6,6 +6,7 @@ import (
 	sq "github.com/Masterminds/squirrel"
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/dto"
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/EventService/service/event/interfaces"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/lerrors"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -22,17 +23,19 @@ func NewEventRepository() *EventRepository {
 	}
 }
 
-func (e *EventRepository) GetOne(id int) (entity.Event, error) {
-	var event entity.Event
-	query, args, err := sq.Select("*").
+var _ interfaces.EventInterface = EventRepository{}
+
+func (e *EventRepository) GetOne(id int) (dto.Event, error) {
+	var event dto.Event
+	query, args, err := sq.Select("band_name", "event_city").
 		From("events").Where(sq.Eq{"event_id": id}).ToSql()
 	if err != nil {
-		return entity.Event{}, multierr.Append(lerrors.ErrInQuery, err)
+		return dto.Event{}, multierr.Append(lerrors.ErrInQuery, err)
 	}
 	row := e.Pool.QueryRow(context.Background(), query, args)
 	err = row.Scan(&event)
 	if err != nil {
-		return entity.Event{}, multierr.Append(lerrors.ErrNoRecord, err)
+		return dto.Event{}, multierr.Append(lerrors.ErrNoRecord, err)
 	}
 
 	return event, nil

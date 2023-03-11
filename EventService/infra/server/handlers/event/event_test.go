@@ -10,15 +10,13 @@ import (
 
 	"github.com/Yuno-obsessed/music_microservices/EventService/domain/entity"
 	"github.com/Yuno-obsessed/music_microservices/EventService/infra/server/handlers/event"
-	"github.com/Yuno-obsessed/music_microservices/EventService/service"
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 )
 
 func TestWatchEvent(t *testing.T) {
 	router := gin.Default()
 	eventInfo := entity.Event{
-		EventId:   uuid.New().String(),
+		EventId:   1,
 		BandName:  "Eluveitie",
 		EventCity: "2",
 		Date:      time.Date(2023, 11, 23, 21, 0o0, 0o0, 0, time.UTC),
@@ -29,9 +27,6 @@ func TestWatchEvent(t *testing.T) {
 	}
 
 	// Add your handler to the router
-	repos := service.NewRepositories()
-	event := event.NewEvent(repos.Event)
-	router
 	router.GET("/api/v1/event/watch/:city", event.EventInfo)
 
 	// Create a request to send to the handler

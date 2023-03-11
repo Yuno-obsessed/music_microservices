@@ -1,10 +1,11 @@
 package server_test
 
 import (
-	"auth-service/infra/server"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server"
 )
 
 // Searching for ideas about useful tests for router

@@ -40,7 +40,7 @@ func (e *Event) EventInfo(c *gin.Context) {
 	}
 	req, err := http.NewRequest("POST", "http://localhost:8088/api/v1/catalog-service/ticket/"+c.Param("id"), nil)
 	if err != nil {
-		e.Logger.Error(lerrors.ErrMakingRequest, zap.Error(err))
+		e.Logger.Error(lerrors.ErrMakingRequest.Error(), zap.Error(err))
 		c.AbortWithStatusJSON(500, gin.H{"error": err})
 	}
 	if req.Response.StatusCode != http.StatusOK {
@@ -62,18 +62,18 @@ func (e *Event) EventInfo(c *gin.Context) {
 }
 
 func (e *Event) EventsOfBand(c *gin.Context) {
-	//path := c.Param("band")
-	//newEvents, err := e.GetAllOfBand(path)
-	//if err != nil || newEvents == nil {
-	//	e.Logger.Error(lerrors.ErrInQuery.Error() + err.Error())
-	//	c.AbortWithStatusJSON(400, err.Error())
-	//}
-	//err = json.NewEncoder(c.Writer).Encode(&newEvents)
-	//if err != nil {
-	//	e.Logger.Error(lerrors.ErrMarshallingJson.Error() + err.Error())
-	//	c.AbortWithStatusJSON(500, err.Error())
-	//}
-	//e.Logger.Info("EventsOfBand handler was called with success")
+	path := c.Param("band")
+	newEvents, err := e.Service.GetAllOfBand(path)
+	if err != nil || newEvents == nil {
+		e.Logger.Error(lerrors.ErrInQuery.Error() + err.Error())
+		c.AbortWithStatusJSON(400, err.Error())
+	}
+	err = json.NewEncoder(c.Writer).Encode(&newEvents)
+	if err != nil {
+		e.Logger.Error(lerrors.ErrMarshallingJson.Error() + err.Error())
+		c.AbortWithStatusJSON(500, err.Error())
+	}
+	e.Logger.Info("EventsOfBand handler was called with success")
 }
 
 func (e *Event) EventsOfCity(c *gin.Context) {
@@ -100,14 +100,14 @@ func (e *Event) EventCreate(c *gin.Context) {
 	}
 	id, err := e.Service.CreateEvent(newEvent)
 	if err != nil {
-		e.Logger.Error(lerrors.ErrInQuery.Error(), zap.Error(err))
+		e.Logger.Error("error:", zap.Error(err))
 		c.AbortWithStatusJSON(400, gin.H{"error": err})
 	}
 	payload, err := json.Marshal(mapping.EventCreateToTicketInfo(id, newEvent))
 	// requests should be in handlers layer.
 	req, err := http.NewRequest("POST", "https://localhost:8088/api/v1/catalog-service/ticket/create", bytes.NewBuffer(payload))
 	if err != nil {
-		e.Logger.Error(lerrors.ErrMakingRequest, zap.Error(err))
+		e.Logger.Error(lerrors.ErrMakingRequest.Error(), zap.Error(err))
 		c.AbortWithStatusJSON(500, gin.H{"error": err})
 	}
 	if req.Response.StatusCode != http.StatusOK {

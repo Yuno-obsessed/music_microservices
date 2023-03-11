@@ -1,8 +1,9 @@
 package auth_test
 
 import (
-	"auth-service/infra/auth"
 	"testing"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/auth"
 
 	"github.com/kataras/jwt"
 )

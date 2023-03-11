@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS events
+(
+    event_id GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    band_name VARCHAR(200) NOT NULL,
+    event_city VARCHAR(100) NOT NULL,
+    event_date TIMESTAMP NOT NULL
+);

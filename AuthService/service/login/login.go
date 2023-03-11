@@ -1,10 +1,11 @@
 package login
 
 import (
-	"auth-service/domain/entity"
-	"auth-service/infra/config/database"
 	"context"
 	"fmt"
+
+	"github.com/Yuno-obsessed/music_microservices/AuthService/domain/entity"
+	"github.com/Yuno-obsessed/music_microservices/ProjectLibrary/database"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -14,7 +15,7 @@ type LoginService struct {
 }
 
 func NewLoginService() *LoginService {
-	db, _ := database.DbInit()
+	db := database.DbInit()
 	return &LoginService{db}
 }
 

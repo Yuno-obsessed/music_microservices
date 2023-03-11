@@ -1,8 +1,7 @@
 package main
 
 import (
-	"auth-service/infra/server"
-
+	"github.com/Yuno-obsessed/music_microservices/AuthService/infra/server"
 	"github.com/joho/godotenv"
 )
 

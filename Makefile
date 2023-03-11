@@ -1,5 +1,11 @@
 # Dev version (for simplicity of developing)
 
+include .env
+
+test:
+	(cd AuthService && go test -v ./...) &&
+	(cd CatalogService && go test -v ./...)
+
 up:
 		docker-compose -f docker-compose.dev.yml up --build -d
 

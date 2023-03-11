@@ -1,7 +1,6 @@
-package entity
+package dto
 
-type Ticket struct {
-	EventId         int `json:"event_id"`
+type TicketOut struct {
 	DefaultQuantity int `json:"default_quantity"`
 	VipQuantity     int `json:"vip_quantity"`
 	SceneQuantity   int `json:"scene_quantity"`

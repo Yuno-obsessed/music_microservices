@@ -33,5 +33,10 @@ func (e *EventService) CreateEvent(event dto.EventCreate) (int, error) {
 	return id, nil
 }
 
-func (e *EventService) ShowAllInCity() error {
+func (e *EventService) GetAllInCity(city string) ([]entity.Event, error) {
+	events, err := e.repo.GetAllOfCity(city)
+	if err != nil {
+		return nil, err
+	}
+	return events, nil
 }
